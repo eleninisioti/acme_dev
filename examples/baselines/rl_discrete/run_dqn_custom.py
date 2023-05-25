@@ -29,7 +29,7 @@ RUN_DISTRIBUTED = flags.DEFINE_bool(
     'way. If False, will run single-threaded.')
 ENV_NAME = flags.DEFINE_string('env_name', env_name, 'What environment to run')
 SEED = flags.DEFINE_integer('seed', 0, 'Random seed.')
-NUM_STEPS = flags.DEFINE_integer('num_steps', 1_000_000,
+NUM_STEPS = flags.DEFINE_integer('num_steps', 10_000_000,
                                  'Number of env steps to run.')
 
 
@@ -42,6 +42,16 @@ def build_experiment_config():
     del seed
     return helpers.make_atari_environment(
         level=env_name, sticky_actions=True, zero_discount_on_life_loss=False)
+
+  logger_dict = collections.defaultdict(loggers.InMemoryLogger)
+
+  def logger_factory(
+          name: str,
+          steps_key: Optional[str] = None,
+          task_id: Optional[int] = None,
+  ) -> loggers.Logger:
+      del steps_key, task_id
+      return logger_dict[name]
 
   # Construct the agent.
   config = dqn.DQNConfig(
@@ -64,6 +74,7 @@ def build_experiment_config():
       builder=dqn_builder,
       environment_factory=env_factory,
       network_factory=helpers.make_dqn_atari_network,
+      logger_factory=logger_factory,
       seed=SEED.value,
       max_num_actor_steps=NUM_STEPS.value)
 
@@ -73,10 +84,18 @@ def main(_):
   if RUN_DISTRIBUTED.value:
     program = experiments.make_distributed_experiment(
         experiment=experiment_config,
-        num_actors=4 if lp_utils.is_local_run() else 128)
+        num_actors=16 if lp_utils.is_local_run() else 128)
     lp.launch(program, xm_resources=lp_utils.make_xm_docker_resources(program))
   else:
     experiments.run_experiment(experiment_config)
+
+  df = pd.DataFrame(logger_dict['evaluator'].data)
+  plt.figure(figsize=(10, 4))
+  plt.title('Training episodes returns')
+  plt.xlabel('Training episodes')
+  plt.ylabel('Episode return')
+  plt.plot(df['actor_episodes'], df['episode_return'], label='Training Episodes return')
+  plt.savefig("test.png")
 
 
 if __name__ == '__main__':
