@@ -1,0 +1,8 @@
+actor_episodes,actor_steps,env_reset_duration_sec,env_step_duration_sec,episode_duration,episode_length,episode_return,select_action_duration_sec,steps_per_second
+1,1268,0.09262275695800781,0.1483028123055347,2296.9065992832184,1268,88.0,0.051038320884343576,0.5520481708371204
+actor_episodes,actor_steps,env_reset_duration_sec,env_step_duration_sec,episode_duration,episode_length,episode_return,evaluator_episodes,evaluator_steps,select_action_duration_sec,steps_per_second
+2,2776,0.10225939750671387,0.13806755963307793,2325.6813678741455,1508,88.0,1,1551,1.392438885229652,0.6484126575187924
+actor_episodes,actor_steps,env_reset_duration_sec,env_step_duration_sec,episode_duration,episode_length,episode_return,evaluator_episodes,evaluator_steps,select_action_duration_sec,steps_per_second
+3,4380,0.10387015342712402,1.3999619317470942,2335.4920058250427,1604,44.0,1,1551,0.04412021556697284,0.6867935468716772
+actor_episodes,actor_steps,env_reset_duration_sec,env_step_duration_sec,episode_duration,episode_length,episode_return,evaluator_episodes,evaluator_steps,select_action_duration_sec,steps_per_second
+4,6041,0.2263507843017578,0.13549561446004427,2343.4708847999573,1661,132.0,1,1551,0.043304659098763555,0.7087782131005442

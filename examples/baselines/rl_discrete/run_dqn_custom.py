@@ -22,6 +22,7 @@ from absl import app
 from acme.jax import experiments
 from acme.utils import lp_utils
 import launchpad as lp
+import collections
 
 env_name = 'BeamRider'
 RUN_DISTRIBUTED = flags.DEFINE_bool(
