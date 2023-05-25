@@ -23,6 +23,7 @@ from acme.jax import experiments
 from acme.utils import lp_utils
 import launchpad as lp
 import collections
+from acme.utils import loggers
 
 env_name = 'BeamRider'
 RUN_DISTRIBUTED = flags.DEFINE_bool(
