@@ -13,7 +13,7 @@
 # limitations under the License.
 
 """Example running DQN on discrete control tasks."""
-
+from acme.utils import loggers
 from absl import flags
 from acme.agents.jax import dqn
 from acme.agents.jax.dqn import losses
