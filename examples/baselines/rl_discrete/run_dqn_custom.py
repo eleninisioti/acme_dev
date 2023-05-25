@@ -86,7 +86,7 @@ def main(_):
   if RUN_DISTRIBUTED.value:
     program = experiments.make_distributed_experiment(
         experiment=experiment_config,
-        num_actors=4 if lp_utils.is_local_run() else 128)
+        num_actors=8 if lp_utils.is_local_run() else 128)
     lp.launch(program, xm_resources=lp_utils.make_xm_docker_resources(program))
   else:
     experiments.run_experiment(experiment_config)
