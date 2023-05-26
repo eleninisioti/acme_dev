@@ -76,7 +76,7 @@ def build_experiment_config():
       builder=dqn_builder,
       environment_factory=env_factory,
       network_factory=helpers.make_dqn_atari_network,
-      logger_factory=logger_factory,
+      #logger_factory=logger_factory,
       seed=SEED.value,
       max_num_actor_steps=NUM_STEPS.value)
 
