@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 if __name__ == "__main__":
 
-    results_dir = "results/test/logs"
+    results_dir = "server_results/acme/20230526-154853/logs"
 
     with open(results_dir + "/actor/logs.csv") as fp:
         reader = csv.reader(fp, delimiter=",", quotechar='"')
