@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -J beamrdiderapexacme
-#SBATCH --cpus-per-task 128
+#SBATCH --cpus-per-task 64
 #SBATCH -t 24:00:00
 #SBATCH --output=/scratch/enisioti/acme_log/jz_logs/%j.out
 #SBATCH --error=/scratch/enisioti/acme_log/jz_logs/%j.err
