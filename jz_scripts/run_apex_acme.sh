@@ -1,7 +1,6 @@
 #!/bin/bash
 #SBATCH -J acmeapex
 #SBATCH --cpus-per-task 32
-#SBATCH --ntasks-per-node=32
 #SBATCH -t 24:00:00
 #SBATCH --output=/scratch/enisioti/acme_log/jz_logs/%j.out
 #SBATCH --error=/scratch/enisioti/acme_log/jz_logs/%j.err
